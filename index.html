@@ -120,12 +120,12 @@
             width: 100%;
             border-radius: 1rem;
             /* 깔끔한 그림자만 적용, 과도한 테두리 제거 */
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            /* box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); */
+            /* transition: transform 0.3s ease; */
         }
 
         .event-product-img:hover {
-            transform: translateY(-5px);
+            /* transform: translateY(-5px); */
         }
 
         .event-text {
@@ -233,9 +233,8 @@
 
 
         .logo img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            width: 160px;
+            height: 54px;
             object-fit: cover;
         }
 
@@ -274,11 +273,11 @@
         /* 히어로 섹션 */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-                url('https://images.unsplash.com/photo-1610832958506-aa56368176cf?q=80&w=2670&auto=format&fit=crop') center/cover;
+                url('images/hero.jpg') center/cover;
             color: white;
             text-align: center;
             padding: 8rem 2rem;
-            min-height: 600px;
+            /* min-height: 600px; */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -631,15 +630,14 @@
     <header>
         <nav class="container">
             <div class="logo">
-                <img src="logo.png" alt="미스터킴 과일나라">
-                <span>미스터킴 과일나라</span>
+                <img src="images/logo.jpg" alt="미스터킴 과일나라">
             </div>
             <ul class="nav-links">
                 <li><a href="#home">홈</a></li>
-                <li><a href="#eventBanner">이벤트</a></li>
                 <li><a href="#products">상품</a></li>
-                <li><a href="#features">특징</a></li>
-                <li><a href="#contact">연락처</a></li>
+                <!-- <li><a href="#eventBanner">이벤트</a></li> -->
+                <!-- <li><a href="#features">특징</a></li> -->
+                <li><a href="#contact">특징</a></li>
             </ul>
         </nav>
     </header>
@@ -647,17 +645,83 @@
     <!-- 히어로 섹션 -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>호치민 프리미엄 <span class="highlight">과일 직배송</span> 서비스</h1>
-            <p>한국, 미국, 뉴질랜드 등지에서 엄선한 최상급 신선 과일.<br>
-                미스터킴 과일나라가 고객님의 집 앞까지 신선함을 그대로 전해드립니다.</p>
-            <div class="hero-buttons">
+            <h1>호치민 프리미엄<br><span class="highlight">과일 직배송</span> 서비스</h1>
+            <!-- <p>한국, 미국, 뉴질랜드 등지에서 엄선한<br>최상급 신선 과일.<br> -->
+            <p>미스터킴 과일나라가 고객님의 집 앞까지<br>신선함을 그대로 전해드립니다.</p>
+            <!-- <div class="hero-buttons">
                 <a href="https://open.kakao.com/o/ge0sctV" target="_blank" class="btn-primary">
-                    🛒 주문하러 가기 (카카오톡)
+                    주문하러 가기
                 </a>
                 <a href="#features" class="btn-secondary">자세히 보기 →</a>
+            </div> -->
+        </div>
+    </section>
+
+
+
+    <!-- 상품 섹션 -->
+    <section class="products" id="products">
+        <div class="container">
+            <h3 class="section-title">오늘의 <span style="color: var(--green-600);">신선 상품</span></h3>
+            <!-- <p style="text-align: center; margin-bottom: 2rem; color: #6b7280;">매일 아침 엄선한 최상급 신선 식품을 만나보세요</p> -->
+
+            <!-- 카테고리 필터 -->
+            <div class="category-filters">
+                <button class="category-btn active" data-category="all">전체</button>
+                <button class="category-btn" data-category="과일">과일</button>
+                <button class="category-btn" data-category="정육">정육</button>
+                <!-- <button class="category-btn" data-category="가공식품">가공식품</button> -->
+                <button class="category-btn" data-category="음료">음료</button>
+                <!-- <button class="category-btn" data-category="수산">수산</button> -->
+            </div>
+
+            <!-- 이벤트 배너 -->
+            <img src="images/event.jpg" alt="한국 딸기 선물세트" class="event-product-img">
+            <!-- <div>
+                <a href="https://open.kakao.com/o/ge0sctV" target="_blank" class="event-btn">
+                    지금 주문하기 🎁
+                </a>
+            </div> -->
+            <!-- <div class="event-banner-container" id="eventBanner">
+                <div class="snow-overlay"></div>
+                <div class="event-content">
+                    <div class="event-image-wrapper">
+                        <img src="images/0.jpg" alt="한국 딸기 선물세트" class="event-product-img">
+                    </div>
+                    <div class="event-text">
+                        <div class="event-badge">
+                            <span>🎄 12월 크리스마스</span>
+                        </div>
+                        <h2>한국 딸기 선물세트</h2>
+                        <p>달콤하고 신선한 프리미엄 한국 딸기를<br>크리스마스 특별가로 만나보세요!</p>
+                        <div class="event-price-box">
+                            <span class="event-original-price">1,000,000₫</span>
+                            <span class="event-sale-price">800,000₫</span>
+                        </div>
+                        <div>
+                            <a href="https://open.kakao.com/o/ge0sctV" target="_blank" class="event-btn">
+                                지금 주문하기 🎁
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <br>
+            <br>
+
+            <!-- 상품 그리드 -->
+            <div class="products-grid" id="productsGrid">
+                <!-- 상품들이 JavaScript로 동적 생성됩니다 -->
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="https://open.kakao.com/o/ge0sctV" target="_blank" class="btn-primary">
+                    카카오톡에서 전체 상품 보기 →
+                </a>
             </div>
         </div>
     </section>
+
 
     <!-- 특징 섹션 -->
     <section class="features" id="features">
@@ -687,64 +751,6 @@
             </div>
         </div>
     </section>
-
-    <!-- 설 명절 이벤트 배너 -->
-    <!-- 설 명절 이벤트 배너 -->
-    <div class="event-banner-container" id="eventBanner">
-        <div class="snow-overlay"></div>
-        <div class="event-content">
-            <div class="event-image-wrapper">
-                <img src="images/0.jpg" alt="한국 딸기 선물세트" class="event-product-img">
-            </div>
-            <div class="event-text">
-                <div class="event-badge">
-                    <span>🎄 12월 크리스마스</span>
-                </div>
-                <h2>한국 딸기 선물세트</h2>
-                <p>달콤하고 신선한 프리미엄 한국 딸기를<br>크리스마스 특별가로 만나보세요!</p>
-                <div class="event-price-box">
-                    <span class="event-original-price">1,000,000₫</span>
-                    <span class="event-sale-price">800,000₫</span>
-                </div>
-                <div>
-                    <a href="https://open.kakao.com/o/ge0sctV" target="_blank" class="event-btn">
-                        지금 주문하기 🎁
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 상품 섹션 -->
-    <section class="products" id="products">
-        <div class="container">
-            <h2 class="section-title">오늘의 <span style="color: var(--green-600);">신선 상품</span></h2>
-            <p style="text-align: center; margin-bottom: 2rem; color: #6b7280;">매일 아침 엄선한 최상급 신선 식품을 만나보세요</p>
-
-            <!-- 카테고리 필터 -->
-            <div class="category-filters">
-                <button class="category-btn active" data-category="all">전체</button>
-                <button class="category-btn" data-category="과일">과일</button>
-                <button class="category-btn" data-category="정육">정육</button>
-                <button class="category-btn" data-category="가공식품">가공식품</button>
-                <button class="category-btn" data-category="음료">음료</button>
-                <button class="category-btn" data-category="수산">수산</button>
-            </div>
-
-            <!-- 상품 그리드 -->
-            <div class="products-grid" id="productsGrid">
-                <!-- 상품들이 JavaScript로 동적 생성됩니다 -->
-            </div>
-
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="https://open.kakao.com/o/ge0sctV" target="_blank" class="btn-primary">
-                    카카오톡에서 전체 상품 보기 →
-                </a>
-            </div>
-        </div>
-    </section>
-
-
 
     <!-- 푸터 -->
     <footer id="contact">
