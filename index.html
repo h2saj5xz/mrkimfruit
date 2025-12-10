@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미스터킴 과일나라 - Mr.kim Fruit - 호치민 신선식품 전문배송</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --green-600: #16a34a;
+            --green-700: #15803d;
+            --green-50: #f0fdf4;
+            --orange-500: #f97316;
+            --orange-600: #ea580c;
+            --red-600: #dc2626;
+            --red-700: #b91c1c;
+            --blue-600: #2563eb;
+            --blue-700: #1d4ed8;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 헤더 */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        /* 헤더 스타일 개선 */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #1f2937;
+            letter-spacing: -0.02em;
+            padding: 0.5rem 0;
+            /* 상하 여백 추가 */
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            /* 폰트 변경 */
+        }
+
+        /* 크리스마스 이벤트 배너 */
+        .event-banner-container {
+            position: relative;
+            width: 100%;
+            /* 모던하고 깔끔한 크리스마스 그라데이션 */
+            background: linear-gradient(105deg, #15803d 0%, #b91c1c 100%);
+            color: white;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.2);
+        }
+
+        /* 눈 내리는 패턴 (투명도 조절로 은은하게) */
+        .snow-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='10' cy='10' r='1.5' fill='white' opacity='0.2'/%3E%3Ccircle cx='30' cy='40' r='1' fill='white' opacity='0.3'/%3E%3Ccircle cx='50' cy='15' r='2' fill='white' opacity='0.1'/%3E%3Ccircle cx='70' cy='60' r='1.5' fill='white' opacity='0.2'/%3E%3Ccircle cx='90' cy='25' r='1' fill='white' opacity='0.3'/%3E%3C/svg%3E");
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .event-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            position: relative;
+        }
+
+        /* 모바일 대응 */
+        @media (max-width: 768px) {
+            .event-content {
+                padding: 2.5rem 1.5rem;
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+        }
+
+        .event-image-wrapper {
+            flex: 0 0 280px;
+            position: relative;
+        }
+
+        .event-product-img {
+            width: 100%;
+            border-radius: 1rem;
+            /* 깔끔한 그림자만 적용, 과도한 테두리 제거 */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .event-product-img:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .event-text h2 {
+            font-size: 2.5rem;
+            margin: 0.5rem 0;
+            font-weight: 900;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-family: 'Pretendard', sans-serif;
+            color: #fff;
+        }
+
+        .event-price-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            padding: 1rem 1.5rem;
+            border-radius: 1rem;
+            display: inline-flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .event-original-price {
+            font-size: 1.2rem;
+            text-decoration: line-through;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .event-sale-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fca5a5;
+            /* 밝은 빨강 */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .event-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #b91c1c;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid #ef4444;
+        }
+
+        .event-btn {
+            background: white;
+            color: #b91c1c;
+            /* 크리스마스 레드 */
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .event-btn:hover {
+            transform: translateY(-2px);
+            background: #fff1f2;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .event-content {
+                flex-direction: column;
+                padding: 3rem 1.5rem;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .event-image-wrapper {
+                flex: 0 0 auto;
+                width: 80%;
+                max-width: 300px;
+            }
+
+            .event-text {
+                text-align: center;
+            }
+
+            .event-text h2 {
+                font-size: 2rem;
+            }
+
+            .event-price-box {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--green-600);
+        }
+
+        .cta-button {
+            background: var(--green-600);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: var(--green-700);
+            transform: scale(1.05);
+        }
+
+        /* 히어로 섹션 */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                url('https://images.unsplash.com/photo-1610832958506-aa56368176cf?q=80&w=2670&auto=format&fit=crop') center/cover;
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content .highlight {
+            color: #86efac;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--green-600);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--green-700);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(22, 163, 74, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+
+
+        /* 특징 섹션 */
+        .features {
+            padding: 5rem 0;
+            background: var(--green-50);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--green-600);
+        }
+
+        /* 상품 섹션 */
+        .products {
+            padding: 5rem 0;
+            background: linear-gradient(to bottom, white, var(--green-50));
+        }
+
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #e5e7eb;
+            background: white;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--green-600);
+            color: white;
+            border-color: var(--green-600);
+            transform: scale(1.05);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            position: relative;
+            border: 1px solid #f3f4f6;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(22, 163, 74, 0.15);
+            border-color: var(--green-600);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            position: relative;
+        }
+
+        .product-badges {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .badge-new {
+            background: var(--green-600);
+        }
+
+        .badge-best {
+            background: var(--orange-500);
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #dc2626;
+            color: white;
+            padding: 0.5rem 0.8rem;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-info {
+            padding: 1.75rem;
+        }
+
+        .product-category {
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            min-height: 2.8rem;
+            line-height: 1.4;
+            color: #111827;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-name-vi {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-current {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--green-600);
+        }
+
+        .price-original {
+            font-size: 1rem;
+            color: #9ca3af;
+            text-decoration: line-through;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 0.875rem;
+            background: var(--green-600);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .add-to-cart:hover {
+            background: var(--green-700);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+        }
+
+        /* 푸터 */
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--green-600);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 헤더 -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <img src="logo.png" alt="미스터킴 과일나라">
+                <span>미스터킴 과일나라</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">홈</a></li>
+                <li><a href="#eventBanner">이벤트</a></li>
+                <li><a href="#products">상품</a></li>
+                <li><a href="#features">특징</a></li>
+                <li><a href="#contact">연락처</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 히어로 섹션 -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>호치민 프리미엄 <span class="highlight">과일 직배송</span> 서비스</h1>
+            <p>한국, 미국, 뉴질랜드 등지에서 엄선한 최상급 신선 과일.<br>
+                미스터킴 과일나라가 고객님의 집 앞까지 신선함을 그대로 전해드립니다.</p>
+            <div class="hero-buttons">
+                <a href="https://open.kakao.com/o/ge0sctV" target="_blank" class="btn-primary">
+                    🛒 주문하러 가기 (카카오톡)
+                </a>
+                <a href="#features" class="btn-secondary">자세히 보기 →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 특징 섹션 -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">왜 <span style="color: var(--green-600);">미스터킴 과일나라</span> 인가요?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>글로벌 소싱</h3>
+                    <p>한국, 미국, 뉴질랜드, 베트남 산지에서 직접 엄선한 최상급 제철 과일만을 취급합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">❄️</div>
+                    <h3>콜드체인 시스템</h3>
+                    <p>입고부터 배송까지 철저한 온도 관리로 밭에서 갓 따온 듯한 신선함을 유지합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>신속 직배송</h3>
+                    <p>호치민 주요 지역 당일 배송 및 예약 배송으로 원하는 시간에 신선하게 받아보세요.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>철저한 품질관리</h3>
+                    <p>매일 아침 꼼꼼한 검수를 통과한 상품만 고객님의 식탁에 올라갑니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 설 명절 이벤트 배너 -->
+    <!-- 설 명절 이벤트 배너 -->
+    <div class="event-banner-container" id="eventBanner">
+        <div class="snow-overlay"></div>
+        <div class="event-content">
+            <div class="event-image-wrapper">
+                <img src="images/0.jpg" alt="한국 딸기 선물세트" class="event-product-img">
+            </div>
+            <div class="event-text">
+                <div class="event-badge">
+                    <span>🎄 12월 크리스마스</span>
+                </div>
+                <h2>한국 딸기 선물세트</h2>
+                <p>달콤하고 신선한 프리미엄 한국 딸기를<br>크리스마스 특별가로 만나보세요!</p>
+                <div class="event-price-box">
+                    <span class="event-original-price">1,000,000₫</span>
+                    <span class="event-sale-price">800,000₫</span>
+                </div>
+                <div>
+                    <a href="https://open.kakao.com/o/ge0sctV" target="_blank" class="event-btn">
+                        지금 주문하기 🎁
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 상품 섹션 -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">오늘의 <span style="color: var(--green-600);">신선 상품</span></h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: #6b7280;">매일 아침 엄선한 최상급 신선 식품을 만나보세요</p>
+
+            <!-- 카테고리 필터 -->
+            <div class="category-filters">
+                <button class="category-btn active" data-category="all">전체</button>
+                <button class="category-btn" data-category="과일">과일</button>
+                <button class="category-btn" data-category="정육">정육</button>
+                <button class="category-btn" data-category="가공식품">가공식품</button>
+                <button class="category-btn" data-category="음료">음료</button>
+                <button class="category-btn" data-category="수산">수산</button>
+            </div>
+
+            <!-- 상품 그리드 -->
+            <div class="products-grid" id="productsGrid">
+                <!-- 상품들이 JavaScript로 동적 생성됩니다 -->
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="https://open.kakao.com/o/ge0sctV" target="_blank" class="btn-primary">
+                    카카오톡에서 전체 상품 보기 →
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 푸터 -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>미스터킴 과일나라</h3>
+                    <p>호치민 신선식품 전문배송</p>
+                    <p>Mr.kim Fruit - Premium Fresh Delivery</p>
+                </div>
+                <div class="footer-section">
+                    <h3>고객센터</h3>
+                    <ul>
+                        <li><a href="https://zalo.me/0919835944" target="_blank">📱 Zalo: 0919835944</a></li>
+                        <li><a href="https://open.kakao.com/o/ge0sctV" target="_blank">💬 카카오톡 단톡방</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>영업시간</h3>
+                    <ul>
+                        <li>월-토: 오전 9시 - 오후 6시</li>
+                        <li>일요일: 휴무</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 미스터킴 과일나라. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 상품 데이터
+        const products = [
+            {
+                id: 1,
+                name: '페루 블루베리',
+                nameVi: 'Blueberry Peru',
+                category: '과일',
+                image: 'images/1.jpg',
+                price: 150000,
+                originalPrice: null,
+                discount: 0,
+                badges: ['best'],
+                unit: '125g'
+            },
+            {
+                id: 2,
+                name: '달랏 아이스홍시',
+                nameVi: 'Hồng Đông Lạnh Đà Lạt',
+                category: '과일',
+                image: 'images/2.jpg',
+                price: 90000,
+                originalPrice: 120000,
+                discount: 25,
+                badges: ['best'],
+                unit: '500g [냉동]'
+            },
+            {
+                id: 3,
+                name: '당도보장 씨없는 청포도',
+                nameVi: 'Nho Xanh Không Hạt Bảo Ngọt',
+                category: '과일',
+                image: 'images/3.jpg',
+                price: 190000,
+                originalPrice: 250000,
+                discount: 24,
+                badges: ['best'],
+                unit: '1kg'
+            },
+            {
+                id: 4,
+                name: '밀양 얼음골사과즙',
+                nameVi: 'Nước Táo Đá Milyang',
+                category: '음료',
+                image: 'images/4.jpg',
+                price: 85000,
+                originalPrice: null,
+                discount: 0,
+                badges: ['best', 'new'],
+                unit: '10팩'
+            },
+            {
+                id: 5,
+                name: '영천 샤인 머스캣',
+                nameVi: 'Nho Shine Muscat Yeongcheon',
+                category: '과일',
+                image: 'images/5.jpg',
+                price: 450000,
+                originalPrice: null,
+                discount: 0,
+                badges: ['best', 'new'],
+                unit: '2kg 1박스'
+            },
+            {
+                id: 6,
+                name: '국화식빵',
+                nameVi: 'Bánh Mì Hoa Cúc',
+                category: '가공식품',
+                image: 'images/6.jpg',
+                price: 85000,
+                originalPrice: 120000,
+                discount: 29,
+                badges: ['best'],
+                unit: '3개'
+            },
+            {
+                id: 7,
+                name: '꽃등심·꽃살·소생갈비 구이세트',
+                nameVi: 'Set Thịt Nạc Thăn, Nạc Dăm, Sườn',
+                category: '정육',
+                image: 'images/7.jpg',
+                price: 380000,
+                originalPrice: null,
+                discount: 0,
+                badges: ['best'],
+                unit: '800g'
+            },
+            {
+                id: 8,
+                name: '밀양 얼음골사과즙',
+                nameVi: 'Nước Táo Đá Milyang',
+                category: '음료',
+                image: 'images/8.jpg',
+                price: 220000,
+                originalPrice: 270000,
+                discount: 18,
+                badges: ['best', 'new'],
+                unit: '1박스'
+            },
+            {
+                id: 9,
+                name: '[웅진] 초록매실 매실청',
+                nameVi: 'Nước Mơ Xanh Woongjin',
+                category: '음료',
+                image: 'images/9.jpg',
+                price: 180000,
+                originalPrice: null,
+                discount: 0,
+                badges: ['best', 'new'],
+                unit: '1.5L'
+            },
+            {
+                id: 10,
+                name: '뉴질랜드 앤비사과',
+                nameVi: 'Táo Envy New Zealand',
+                category: '과일',
+                image: 'images/10.jpg',
+                price: 160000,
+                originalPrice: 250000,
+                discount: 36,
+                badges: ['best'],
+                unit: '1kg'
+            },
+            {
+                id: 11,
+                name: '썬키스트 카라 오렌지',
+                nameVi: 'Cam Cara Ruột Đỏ Sunkist',
+                category: '과일',
+                image: 'images/11.jpg',
+                price: 210000,
+                originalPrice: 295000,
+                discount: 29,
+                badges: ['best'],
+                unit: '3kg'
+            },
+            {
+                id: 12,
+                name: '완도 활전복',
+                nameVi: 'Bào Ngư Sống Wando',
+                category: '수산',
+                image: 'images/12.jpg',
+                price: 350000,
+                originalPrice: null,
+                discount: 0,
+                badges: ['best'],
+                unit: '500g'
+            }
+        ];
+
+        // 가격 포맷팅
+        function formatPrice(price) {
+            return new Intl.NumberFormat('vi-VN').format(price) + '₫';
+        }
+
+        // 상품 카드 생성
+        function createProductCard(product) {
+            const badgesHTML = product.badges.map(badge => {
+                if (badge === 'new') return '<span class="badge badge-new">신상품</span>';
+                if (badge === 'best') return '<span class="badge badge-best">베스트</span>';
+                return '';
+            }).join('');
+
+            const discountHTML = product.discount > 0
+                ? `<div class="discount-badge">-${product.discount}%</div>`
+                : '';
+
+            const originalPriceHTML = product.originalPrice
+                ? `<span class="price-original">${formatPrice(product.originalPrice)}</span>`
+                : '';
+
+            return `
+                <div class="product-card" data-category="${product.category}">
+                    <div style="position: relative;">
+                        <img src="${product.image}" alt="${product.name}" class="product-image">
+                        <div class="product-badges">${badgesHTML}</div>
+                        ${discountHTML}
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <h3 class="product-name">${product.name} ${product.unit}</h3>
+                        <p class="product-name-vi">${product.nameVi}</p>
+                        <div class="product-price">
+                            <span class="price-current">${formatPrice(product.price)}</span>
+                            ${originalPriceHTML}
+                        </div>
+                        <a href="https://open.kakao.com/o/ge0sctV" target="_blank" class="add-to-cart">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:4px; margin-bottom:2px;"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                            주문하기
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 상품 렌더링
+        function renderProducts(category = 'all') {
+            const grid = document.getElementById('productsGrid');
+            const filteredProducts = category === 'all'
+                ? products
+                : products.filter(p => p.category === category);
+
+            grid.innerHTML = filteredProducts.map(createProductCard).join('');
+        }
+
+        // 카테고리 필터
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderProducts(this.dataset.category);
+            });
+        });
+
+        // 초기 렌더링
+        renderProducts();
+
+        // 부드러운 스크롤
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
