@@ -276,7 +276,8 @@
                 url('images/hero.jpg') center/cover;
             color: white;
             text-align: center;
-            padding: 8rem 2rem;
+            padding: 6rem 2rem;
+            /* 데스크탑 패딩 약간 축소 */
             /* min-height: 600px; */
             display: flex;
             align-items: center;
@@ -614,12 +615,46 @@
                 /* 모바일에서 로고 중앙 정렬 */
             }
 
+            .hero {
+                padding: 4rem 1.5rem;
+                /* 모바일 히어로 패딩 대폭 축소 */
+            }
+
             .hero-content h1 {
                 font-size: 2rem;
             }
 
             .nav-links {
                 display: none;
+            }
+
+            /* 특징 섹션 모바일 최적화 */
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                /* 2열로 변경 */
+                gap: 1rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem 1rem;
+                /* 카드 내부 여백 축소 */
+            }
+
+            .feature-icon {
+                font-size: 2rem;
+                /* 아이콘 크기 축소 */
+                margin-bottom: 0.5rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .feature-card p {
+                font-size: 0.9rem;
+                word-break: keep-all;
+                /* 단어 단위 줄바꿈 */
             }
 
             /* 모바일에서 상품 그리드 2열로 변경 */
